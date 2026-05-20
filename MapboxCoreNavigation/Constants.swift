@@ -1,6 +1,8 @@
 import CoreLocation
 import Foundation
+#if SWIFT_PACKAGE
 import MapboxCoreNavigationObjC
+#endif
 import MapboxDirections
 
 // MARK: - RouteController

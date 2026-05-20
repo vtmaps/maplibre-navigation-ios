@@ -1,6 +1,8 @@
 import CoreLocation
 import MapboxDirections
+#if SWIFT_PACKAGE
 import MapboxDirectionsObjc
+#endif
 
 extension RouteOptions {
     var activityType: CLActivityType {

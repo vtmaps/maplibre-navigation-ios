@@ -1,7 +1,10 @@
 import Foundation
 import MapboxCoreNavigation
+#if SWIFT_PACKAGE
 import MapboxCoreNavigationObjC
 import MapboxNavigationObjC
+#endif
+
 
 extension NSError {
     /**

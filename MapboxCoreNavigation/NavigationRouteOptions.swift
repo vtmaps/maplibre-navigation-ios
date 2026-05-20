@@ -1,6 +1,9 @@
 import Foundation
 import MapboxDirections
+#if SWIFT_PACKAGE
 import MapboxDirectionsObjc
+#endif
+
 
 /**
  A `NavigationRouteOptions` object specifies turn-by-turn-optimized criteria for results returned by the Mapbox Directions API.
