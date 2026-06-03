@@ -52,7 +52,7 @@ let package = Package(
         .target(
             name: "MapboxNavigationObjC",
             dependencies: [
-                .product(name: "MapLibre", package: "maplibre-gl-native-distribution")
+                .product(name: "VTMap", package: "vtmap-gl-native-distribution")
             ],
             path: "MapboxNavigationObjC"
         ),
