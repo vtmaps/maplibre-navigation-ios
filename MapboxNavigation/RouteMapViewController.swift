@@ -52,6 +52,7 @@ class RouteMapViewController: UIViewController {
     var stepsViewController: StepsViewController?
     var destination: Waypoint?
     var arrowCurrentStep: RouteStep?
+    var pendingShowUI = false
 	
     var contentInsets: UIEdgeInsets {
         let top = self.navigationView.instructionsBannerContentView.bounds.height
@@ -174,6 +175,10 @@ class RouteMapViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.prepareForMap()
+        if self.pendingShowUI {
+            self.pendingShowUI = false
+            self.navigationView.showUI(animated: true)
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {

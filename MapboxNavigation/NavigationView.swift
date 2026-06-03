@@ -59,9 +59,11 @@ open class NavigationView: UIView {
         self.instructionsBannerContentView.topAnchor.constraint(equalTo: self.instructionsBannerView.topAnchor)
     ]
 
-    var endOfRouteShowConstraint: NSLayoutConstraint?
-    var endOfRouteHideConstraint: NSLayoutConstraint?
-    var endOfRouteHeightConstraint: NSLayoutConstraint?
+    lazy var endOfRouteShowConstraint: NSLayoutConstraint? = self.endOfRouteView?.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+
+    lazy var endOfRouteHideConstraint: NSLayoutConstraint? = self.endOfRouteView?.topAnchor.constraint(equalTo: self.bottomAnchor)
+
+    lazy var endOfRouteHeightConstraint: NSLayoutConstraint? = self.endOfRouteView?.heightAnchor.constraint(equalToConstant: Constants.endOfRouteHeight)
 
     private enum Images {
         static let overview = UIImage(named: "overview", in: .mapboxNavigation, compatibleWith: nil)!.withRenderingMode(.alwaysTemplate)
@@ -138,14 +140,6 @@ open class NavigationView: UIView {
             if let endOfRouteView {
                 endOfRouteView.translatesAutoresizingMaskIntoConstraints = false
                 addSubview(endOfRouteView)
-                
-                self.endOfRouteShowConstraint = endOfRouteView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
-                self.endOfRouteHideConstraint = endOfRouteView.topAnchor.constraint(equalTo: self.bottomAnchor)
-                self.endOfRouteHeightConstraint = endOfRouteView.heightAnchor.constraint(equalToConstant: Constants.endOfRouteHeight)
-            } else {
-                self.endOfRouteShowConstraint = nil
-                self.endOfRouteHideConstraint = nil
-                self.endOfRouteHeightConstraint = nil
             }
         }
     }
@@ -192,8 +186,10 @@ open class NavigationView: UIView {
 		
         NSLayoutConstraint.deactivate(self.bannerHideConstraints)
         NSLayoutConstraint.activate(self.bannerShowConstraints)
+        self.layoutIfNeeded() // flush constraints before animating
 		
         UIView.animate(withDuration: animated ? CATransaction.animationDuration() : 0) {
+            self.layoutIfNeeded()
             views.forEach { $0.alpha = 1 }
         } completion: { _ in
             views.forEach { $0.isHidden = false }

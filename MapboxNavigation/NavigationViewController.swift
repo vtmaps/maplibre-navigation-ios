@@ -446,7 +446,7 @@ open class NavigationViewController: UIViewController {
         }
         self.route = route
 		
-        self.mapViewController.navigationView.showUI(animated: animated)
+        self.mapViewController.pendingShowUI = true
         self.mapViewController.destination = route.legs.last?.destination
 
         self.routeController?.usesDefaultUserInterface = true
