@@ -15,7 +15,7 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(url: "https://github.com/vtmaps/mapbox-directions-swift", exact: "1.0.2"),
+        .package(url: "https://github.com/vtmaps/mapbox-directions-swift", exact: "1.0.3"),
         .package(url: "https://github.com/flitsmeister/turf-swift", exact: "0.2.2"),
         .package(url: "https://github.com/vtmaps/vtmap-gl-native-distribution.git", from: "6.26.2"),
         .package(url: "https://github.com/ceeK/Solar.git", exact: "3.0.1"),

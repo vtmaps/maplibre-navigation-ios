@@ -184,8 +184,8 @@ open class NavigationView: UIView {
             self.floatingStackView
         ]
 		
-        NSLayoutConstraint.activate(self.bannerShowConstraints)
         NSLayoutConstraint.deactivate(self.bannerHideConstraints)
+        NSLayoutConstraint.activate(self.bannerShowConstraints)
 		
         UIView.animate(withDuration: animated ? CATransaction.animationDuration() : 0) {
             views.forEach { $0.alpha = 1 }
