@@ -184,13 +184,15 @@ open class NavigationView: UIView {
             self.floatingStackView
         ]
 		
+        views.forEach { $0.isHidden = false }
+		
         NSLayoutConstraint.deactivate(self.bannerHideConstraints)
         NSLayoutConstraint.activate(self.bannerShowConstraints)
 		
         UIView.animate(withDuration: animated ? CATransaction.animationDuration() : 0) {
             views.forEach { $0.alpha = 1 }
+            self.layoutIfNeeded()
         } completion: { _ in
-            views.forEach { $0.isHidden = false }
             self.bottomBannerView.traitCollectionDidChange(self.traitCollection)
         }
     }
@@ -208,6 +210,7 @@ open class NavigationView: UIView {
 		
         UIView.animate(withDuration: animated ? CATransaction.animationDuration() : 0) {
             views.forEach { $0.alpha = 0 }
+            self.layoutIfNeeded()
         } completion: { _ in
             views.forEach { $0.isHidden = true }
             self.bottomBannerView.traitCollectionDidChange(self.traitCollection)
