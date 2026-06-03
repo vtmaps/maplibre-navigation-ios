@@ -23,5 +23,11 @@ extension Bundle {
         object(forInfoDictionaryKey: "NSLocationAlwaysUsageDescription") as? String
     }
     
-    class var mapboxCoreNavigation: Bundle { Bundle(for: RouteController.self) }
+    class var mapboxCoreNavigation: Bundle {
+        #if SWIFT_PACKAGE
+        return Bundle.module
+        #else
+        return Bundle(for: RouteController.self)
+        #endif
+     }
 }

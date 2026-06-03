@@ -2,7 +2,13 @@ import UIKit
 
 extension Bundle {
     class var mapboxNavigation: Bundle {
-        get { return Bundle(for: NavigationViewController.self) }
+        get {
+            #if SWIFT_PACKAGE
+            return Bundle.module
+            #else
+            return Bundle(for: NavigationViewController.self)
+            #endif
+        }
     }
     
     func image(named: String) -> UIImage? {
