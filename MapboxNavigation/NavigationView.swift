@@ -59,11 +59,9 @@ open class NavigationView: UIView {
         self.instructionsBannerContentView.topAnchor.constraint(equalTo: self.instructionsBannerView.topAnchor)
     ]
 
-    lazy var endOfRouteShowConstraint: NSLayoutConstraint? = self.endOfRouteView?.bottomAnchor.constraint(equalTo: self.bottomAnchor)
-
-    lazy var endOfRouteHideConstraint: NSLayoutConstraint? = self.endOfRouteView?.topAnchor.constraint(equalTo: self.bottomAnchor)
-
-    lazy var endOfRouteHeightConstraint: NSLayoutConstraint? = self.endOfRouteView?.heightAnchor.constraint(equalToConstant: Constants.endOfRouteHeight)
+    var endOfRouteShowConstraint: NSLayoutConstraint?
+    var endOfRouteHideConstraint: NSLayoutConstraint?
+    var endOfRouteHeightConstraint: NSLayoutConstraint?
 
     private enum Images {
         static let overview = UIImage(named: "overview", in: .mapboxNavigation, compatibleWith: nil)!.withRenderingMode(.alwaysTemplate)
@@ -140,6 +138,14 @@ open class NavigationView: UIView {
             if let endOfRouteView {
                 endOfRouteView.translatesAutoresizingMaskIntoConstraints = false
                 addSubview(endOfRouteView)
+                
+                self.endOfRouteShowConstraint = endOfRouteView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+                self.endOfRouteHideConstraint = endOfRouteView.topAnchor.constraint(equalTo: self.bottomAnchor)
+                self.endOfRouteHeightConstraint = endOfRouteView.heightAnchor.constraint(equalToConstant: Constants.endOfRouteHeight)
+            } else {
+                self.endOfRouteShowConstraint = nil
+                self.endOfRouteHideConstraint = nil
+                self.endOfRouteHeightConstraint = nil
             }
         }
     }
@@ -184,15 +190,13 @@ open class NavigationView: UIView {
             self.floatingStackView
         ]
 		
-        views.forEach { $0.isHidden = false }
-		
         NSLayoutConstraint.deactivate(self.bannerHideConstraints)
         NSLayoutConstraint.activate(self.bannerShowConstraints)
 		
         UIView.animate(withDuration: animated ? CATransaction.animationDuration() : 0) {
             views.forEach { $0.alpha = 1 }
-            self.layoutIfNeeded()
         } completion: { _ in
+            views.forEach { $0.isHidden = false }
             self.bottomBannerView.traitCollectionDidChange(self.traitCollection)
         }
     }
@@ -210,7 +214,6 @@ open class NavigationView: UIView {
 		
         UIView.animate(withDuration: animated ? CATransaction.animationDuration() : 0) {
             views.forEach { $0.alpha = 0 }
-            self.layoutIfNeeded()
         } completion: { _ in
             views.forEach { $0.isHidden = true }
             self.bottomBannerView.traitCollectionDidChange(self.traitCollection)

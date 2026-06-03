@@ -208,13 +208,6 @@ class RouteMapViewController: UIViewController {
         self.mapView.compassView.isHidden = true
         self.mapView.tracksUserCourse = true
 
-        if let visualInstruction = routeController.routeProgress.currentLegProgress.currentStepProgress.currentVisualInstruction {
-            self.instructionsBannerView.update(for: visualInstruction)
-            self.lanesView.update(for: visualInstruction)
-            self.nextBannerView.update(for: visualInstruction)
-        }
-        self.instructionsBannerView.updateDistance(for: routeController.routeProgress.currentLegProgress.currentStepProgress)
-
         if let camera = self.pendingCamera {
             self.mapView.camera = camera
             return
@@ -254,12 +247,6 @@ class RouteMapViewController: UIViewController {
 		
         self.updateETA()
         self.currentStepIndexMapped = 0
-        
-        if let visualInstruction = routeController.routeProgress.currentLegProgress.currentStepProgress.currentVisualInstruction {
-            self.instructionsBannerView.update(for: visualInstruction)
-            self.lanesView.update(for: visualInstruction)
-            self.nextBannerView.update(for: visualInstruction)
-        }
         self.instructionsBannerView.updateDistance(for: routeController.routeProgress.currentLegProgress.currentStepProgress)
 
         self.mapView.addArrow(route: routeController.routeProgress.route, legIndex: routeController.routeProgress.legIndex, stepIndex: routeController.routeProgress.currentLegProgress.stepIndex + 1)
