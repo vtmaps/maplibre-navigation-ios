@@ -1,7 +1,7 @@
 import Foundation
 import MapboxCoreNavigation
 import MapboxDirections
-import MapLibre
+import VTMap
 
 /**
  An extension on `MLNMapView` that allows for toggling traffic on a map style that contains a [Mapbox Traffic source](https://www.mapbox.com/vector-tiles/mapbox-traffic-v1/).

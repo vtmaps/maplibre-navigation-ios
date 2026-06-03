@@ -1,5 +1,5 @@
 import Foundation
-import MapLibre
+import VTMap
 #if canImport(CarPlay)
 import CarPlay
 

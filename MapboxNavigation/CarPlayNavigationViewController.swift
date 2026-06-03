@@ -1,7 +1,7 @@
 import Foundation
 import MapboxCoreNavigation
 import MapboxDirections
-import MapLibre
+import VTMap
 #if canImport(CarPlay)
 import CarPlay
 

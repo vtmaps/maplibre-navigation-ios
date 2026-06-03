@@ -1,5 +1,5 @@
 import Foundation
-import MapLibre
+import VTMap
 
 extension MLNVectorTileSource {
     var isMapboxStreets: Bool {

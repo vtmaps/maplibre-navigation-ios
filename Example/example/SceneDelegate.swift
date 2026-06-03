@@ -8,7 +8,7 @@
 import MapboxCoreNavigation
 import MapboxDirections
 import MapboxNavigation
-import MapLibre
+import VTMap
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {

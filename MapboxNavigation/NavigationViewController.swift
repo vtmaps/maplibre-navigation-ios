@@ -1,6 +1,6 @@
 import MapboxCoreNavigation
 import MapboxDirections
-import MapLibre
+import VTMap
 import UIKit
 #if canImport(CarPlay)
 import CarPlay

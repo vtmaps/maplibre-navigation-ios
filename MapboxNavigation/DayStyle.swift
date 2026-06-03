@@ -1,5 +1,5 @@
 import Foundation
-import MapLibre
+import VTMap
 
 extension UIColor {
     class var defaultRouteLine: UIColor { ConfigManager.shared.config.routeLineColor }

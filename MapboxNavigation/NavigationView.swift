@@ -1,5 +1,5 @@
 import MapboxDirections
-import MapLibre
+import VTMap
 import UIKit
 
 protocol NavigationViewDelegate: NavigationMapViewDelegate, MLNMapViewDelegate, StatusViewDelegate, InstructionsBannerViewDelegate, NavigationMapViewCourseTrackingDelegate, VisualInstructionDelegate {

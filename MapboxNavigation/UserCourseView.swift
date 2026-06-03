@@ -1,4 +1,4 @@
-import MapLibre
+import VTMap
 import Turf
 import UIKit
 
